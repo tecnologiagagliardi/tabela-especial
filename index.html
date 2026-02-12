@@ -12,62 +12,73 @@
 <body>
   <div class="container">
     <header>
-      <h1>Solicitação tabela especial</h1>
+      <h1>Solicitação Tabela Especial</h1>
     </header>
 
     <form id="tabelaForm">
 
-      <label>
-        Data da Solicitação
+      <label>Data da Solicitação
         <input type="text" id="dataAtual" readonly>
       </label>
 
-      <label>
-        Código do Cliente:
+      <label>Código do Cliente:
         <input type="text" id="codigoCliente" required style="text-transform: uppercase;">
       </label>
 
-      <label>
-        CNPJ/CPF:
+      <label>CNPJ/CPF:
         <input type="text" id="cnpjCpf" required placeholder="Somente números">
       </label>
 
-      <label>
-        Razão Social:
-        <input type="text" id="razaoSocial" required>
-      </label>
-
-      <label>
-        Cidade:
-        <input type="text" id="cidade" required style="text-transform: uppercase;">
-      </label>
-
-      <label>
-        Estado:
-        <input type="text" id="estado" required style="text-transform: uppercase;">
-      </label>
-
-      <label>Código do produto:
-        <input type="text" id="codigoProduto" required style="text-transform: uppercase;">
-      </label>
-
-      <label>Quantidade:
-        <input type="text" id="brosDianteiroVipal" required inputmode="numeric" placeholder="">
-      </label>
-
-      <label>Preço:
-        <input type="text" id="preco" inputmode="decimal" required placeholder="R$ 0,00">
+      <label>Razão Social:
+        <input type="text" id="razaoSocial" required style="text-transform: uppercase;">
       </label>
 
       <label>Prazo de pagamento:
-        <input type="text" id="prazoPagamento" required required style="text-transform: uppercase;">
+        <input type="text" id="prazoPagamento" required style="text-transform: uppercase;">
       </label>
 
+      <hr>
+      <h3>Produtos</h3>
+
+      <div id="produtosContainer"></div>
+
+      <button type="button" id="adicionarProduto">
+        + Adicionar Produto
+      </button>
+
+      <!-- TEMPLATE OCULTO -->
+      <template id="produtoTemplate">
+        <div class="produto-item">
+
+          <label>Código do Produto:
+            <input type="text" name="codigoProduto[]" required>
+          </label>
+
+          <label>Quantidade:
+            <input type="number" name="quantidade[]" required>
+          </label>
+
+          <label>Preço:
+            <input type="text" name="preco[]" class="campo-preco"
+              required placeholder="R$ 0,00">
+          </label>
+
+          <button type="button" class="removerProduto">
+            Remover
+          </button>
+
+          <hr>
+        </div>
+      </template>
+
+      <br>
+
       <label>Observações:
-        <br><textarea id="observações" style="text-transform: uppercase;" rows="5" cols="125"></textarea>
+        <textarea id="observacoes"></textarea>
       </label>
 
       <button type="submit">Enviar</button>
+
     </form>
   </div>
 
