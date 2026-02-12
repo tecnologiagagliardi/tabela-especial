@@ -1,0 +1,220 @@
+/* ======================
+   BASE
+======================= */
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ======================
+   CABEÇALHO
+======================= */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#header-image {
+    max-width: 280px;
+}
+
+/* ======================
+   TÍTULOS
+======================= */
+h1,
+h2,
+h3 {
+    text-align: center;
+    color: #2a3f54;
+}
+
+/* ======================
+   FORMULÁRIO
+======================= */
+form label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+select {
+    background-color: #f0f0f0;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input[readonly] {
+    background-color: #e4e8ec;
+    cursor: not-allowed;
+}
+
+hr {
+    margin: 25px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px;
+  font-size: 16px;
+  resize: vertical;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+/* ======================
+   BOTÃO
+======================= */
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #2a3f54;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #1f2b3a;
+}
+
+/* ======================
+   MODAL DE CONFIRMAÇÃO
+======================= */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #2a3f54;
+}
+
+.modal-content pre {
+    text-align: left;
+    background: #eef4f8;
+    padding: 15px;
+    border-radius: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-size: 14px;
+}
+
+/* ======================
+   BOTÕES DO MODAL
+======================= */
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#btnConfirmar {
+    background: #2a3f54;
+    color: #fff;
+}
+
+#btnConfirmar:hover {
+    background: #1f2b3a;
+}
+
+#btnFechar {
+    background: #c0392b;
+    color: #fff;
+}
+
+#btnFechar:hover {
+    background: #922b21;
+}
+
+/* ======================
+   RESPONSIVIDADE
+======================= */
+@media (max-width: 1024px) {
+    .container {
+        margin: 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    button {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    textarea {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px; /* evita zoom automático no iPhone */
+    }
+
+    form label {
+        font-size: 14px;
+    }
+}

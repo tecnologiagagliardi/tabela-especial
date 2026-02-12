@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitação Tabela - Gagliardi</title>
+  <link rel="icon" type="image/png" href="assets/images/gps.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Solicitação tabela especial</h1>
+    </header>
+
+    <form id="tabelaForm">
+
+      <label>
+        Data da Solicitação
+        <input type="text" id="dataAtual" readonly>
+      </label>
+
+      <label>
+        Código do Cliente:
+        <input type="text" id="codigoCliente" required style="text-transform: uppercase;">
+      </label>
+
+      <label>
+        CNPJ/CPF:
+        <input type="text" id="cnpjCpf" required placeholder="Somente números">
+      </label>
+
+      <label>
+        Razão Social:
+        <input type="text" id="razaoSocial" required>
+      </label>
+
+      <label>
+        Cidade:
+        <input type="text" id="cidade" required style="text-transform: uppercase;">
+      </label>
+
+      <label>
+        Estado:
+        <input type="text" id="estado" required style="text-transform: uppercase;">
+      </label>
+
+      <label>Código do produto:
+        <input type="text" id="codigoProduto" required style="text-transform: uppercase;">
+      </label>
+
+      <label>Quantidade:
+        <input type="text" id="brosDianteiroVipal" required inputmode="numeric" placeholder="">
+      </label>
+
+      <label>Preço:
+        <input type="text" id="preco" inputmode="decimal" required placeholder="R$ 0,00">
+      </label>
+
+      <label>Prazo de pagamento:
+        <input type="text" id="prazoPagamento" required required style="text-transform: uppercase;">
+      </label>
+
+      <label>Observações:
+        <br><textarea id="observações" style="text-transform: uppercase;" rows="5" cols="125"></textarea>
+      </label>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modalConfirmacao" class="modal">
+    <div class="modal-content">
+      <h2>Confirme suas informações</h2>
+      <pre id="modalTexto"></pre>
+      <div class="modal-buttons">
+        <button id="btnConfirmar">Enviar</button>
+        <button id="btnFechar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
