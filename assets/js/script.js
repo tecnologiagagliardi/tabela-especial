@@ -14,6 +14,7 @@ const template = document.getElementById("produtoTemplate");
 const codigoCliente = document.getElementById("codigoCliente");
 const cnpjCpf = document.getElementById("cnpjCpf");
 const razaoSocial = document.getElementById("razaoSocial");
+const uf = document.getElementById("uf");
 
 let dadosClientes = [];
 let dadosSku = [];
@@ -43,13 +44,14 @@ async function carregarClientes() {
     linhas.shift(); // remove cabeçalho
 
     dadosClientes = linhas.map(l => {
-      const [codigo_cliente, cnpjCpf, razao_social] =
+      const [codigo_cliente, cnpjCpf, razao_social, estado] =
         l.split(",").map(c => c.trim());
 
       return {
         codigo_cliente,
         cnpjCpf,
-        razao_social
+        razao_social,
+        estado
       };
     });
 
@@ -108,6 +110,7 @@ codigoCliente.addEventListener("change", function () {
 
   cnpjCpf.value = cliente.cnpjCpf;
   razaoSocial.value = cliente.razao_social;
+  uf.value = cliente.estado;
 });
 
 /* =========================
@@ -212,10 +215,9 @@ DATA: ${get("dataAtual")}
 CÓDIGO DO CLIENTE: ${get("codigoCliente")}
 CNPJ/CPF: ${get("cnpjCpf")}
 RAZÃO SOCIAL: ${get("razaoSocial")}
+UF: ${get("uf")}
 PRAZO DE PAGAMENTO: ${get("prazoPagamento")}
-
 ${listaProdutos}
-
 OBSERVAÇÕES:
 ${get("observacoes")}
 `;
