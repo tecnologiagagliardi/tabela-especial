@@ -16,6 +16,7 @@ const cnpjCpf = document.getElementById("cnpjCpf");
 const razaoSocial = document.getElementById("razaoSocial");
 
 let dadosClientes = [];
+let dadosSku = [];
 let resumoEmail = "";
 
 /* =========================
@@ -57,6 +58,38 @@ async function carregarClientes() {
   }
 }
 
+/* =========================
+   CARREGAR SKU
+========================= */
+async function carregarSku() {
+  try {
+    const response = await fetch("assets/data/sku.txt");
+    const texto = await response.text();
+
+    const linhas = texto
+      .split("\n")
+      .map(l => l.trim())
+      .filter(Boolean);
+
+    linhas.shift(); // remove cabeçalho
+
+    dadosSku = linhas.map(l => {
+      const [codigo_produto, descricao] =
+        l.split(",").map(c => c.trim());
+
+      return {
+        codigo_produto,
+        descricao
+      };
+    });
+
+  } catch (erro) {
+    console.error("Erro ao carregar SKU:", erro);
+  }
+}
+
+carregarSku();
+
 carregarClientes();
 
 /* =========================
@@ -75,6 +108,33 @@ codigoCliente.addEventListener("change", function () {
 
   cnpjCpf.value = cliente.cnpjCpf;
   razaoSocial.value = cliente.razao_social;
+});
+
+/* =========================
+   BUSCAR PRODUTO
+========================= */
+container.addEventListener("change", function (e) {
+
+  if (e.target.name === "codigoProduto[]") {
+
+    const codigoDigitado = e.target.value.trim();
+
+    const produto = dadosSku.find(
+      p => p.codigo_produto === codigoDigitado
+    );
+
+    const item = e.target.closest(".produto-item");
+    const campoDescricao = item.querySelector(
+      'input[name="descricaoProduto[]"]'
+    );
+
+    if (!produto) {
+      campoDescricao.value = "Produto não encontrado";
+      return;
+    }
+
+    campoDescricao.value = produto.descricao;
+  }
 });
 
 /* =========================
@@ -131,15 +191,16 @@ form.addEventListener("submit", e => {
 
   produtos.forEach((produto, index) => {
     const codigo = produto.querySelector('input[name="codigoProduto[]"]').value;
+    const descricao = produto.querySelector('input[name="descricaoProduto[]"]').value;
     const qtd = produto.querySelector('input[name="quantidade[]"]').value;
     const preco = produto.querySelector('input[name="preco[]"]').value;
 
     listaProdutos += `
 PRODUTO ${index + 1}
 Código: ${codigo}
+Descrição: ${descricao}
 Quantidade: ${qtd}
 Preço: ${preco}
-
 `;
   });
 
