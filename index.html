@@ -1,100 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solicitação Tabela - Gagliardi</title>
+    <link rel="icon" type="image/png" href="assets/images/gps.png" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solicitação Tabela - Gagliardi</title>
-  <link rel="icon" type="image/png" href="assets/images/gps.png">
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Solicitação Tabela Especial</h1>
+      </header>
 
-<body>
-  <div class="container">
-    <header>
-      <h1>Solicitação Tabela Especial</h1>
-    </header>
+      <form id="tabelaForm">
+        <label
+          >Data da Solicitação
+          <input type="text" id="dataAtual" readonly />
+        </label>
 
-    <form id="tabelaForm">
+        <label
+          >Código do Cliente:
+          <input
+            type="text"
+            id="codigoCliente"
+            required
+            style="text-transform: uppercase"
+          />
+        </label>
 
-      <label>Data da Solicitação
-        <input type="text" id="dataAtual" readonly>
-      </label>
+        <label
+          >CNPJ/CPF:
+          <input
+            type="text"
+            id="cnpjCpf"
+            required
+            placeholder="Somente números"
+          />
+        </label>
 
-      <label>Código do Cliente:
-        <input type="text" id="codigoCliente" required style="text-transform: uppercase;">
-      </label>
+        <label
+          >Razão Social:
+          <input
+            type="text"
+            id="razaoSocial"
+            required
+            style="text-transform: uppercase"
+          />
+        </label>
 
-      <label>CNPJ/CPF:
-        <input type="text" id="cnpjCpf" required placeholder="Somente números">
-      </label>
+        <label
+          >Prazo de pagamento:
+          <input
+            type="text"
+            id="prazoPagamento"
+            required
+            style="text-transform: uppercase"
+          />
+        </label>
 
-      <label>Razão Social:
-        <input type="text" id="razaoSocial" required style="text-transform: uppercase;">
-      </label>
+        <hr />
+        <h3>Produtos</h3>
 
-      <label>Prazo de pagamento:
-        <input type="text" id="prazoPagamento" required style="text-transform: uppercase;">
-      </label>
+        <div id="produtosContainer"></div>
 
-      <hr>
-      <h3>Produtos</h3>
+        <button type="button" id="adicionarProduto">+ Adicionar Produto</button>
 
-      <div id="produtosContainer"></div>
+        <!-- TEMPLATE OCULTO -->
+        <template id="produtoTemplate">
+          <div class="produto-item">
+            <label
+              >Código do Produto:
+              <input type="text" name="codigoProduto[]" required />
+            </label>
 
-      <button type="button" id="adicionarProduto">
-        + Adicionar Produto
-      </button>
+            <label
+              >Descrição:
+              <input type="text" name="descricaoProduto[]" readonly />
+            </label>
 
-      <!-- TEMPLATE OCULTO -->
-      <template id="produtoTemplate">
-        <div class="produto-item">
+            <label
+              >Quantidade:
+              <input type="number" name="quantidade[]" required />
+            </label>
 
-          <label>Código do Produto:
-            <input type="text" name="codigoProduto[]" required>
-          </label>
+            <label
+              >Preço:
+              <input
+                type="text"
+                name="preco[]"
+                class="campo-preco"
+                required
+                placeholder="R$ 0,00"
+              />
+            </label>
 
-          <label>Quantidade:
-            <input type="number" name="quantidade[]" required>
-          </label>
+            <button type="button" class="removerProduto">Remover</button>
 
-          <label>Preço:
-            <input type="text" name="preco[]" class="campo-preco"
-              required placeholder="R$ 0,00">
-          </label>
+            <hr />
+          </div>
+        </template>
 
-          <button type="button" class="removerProduto">
-            Remover
-          </button>
+        <br />
 
-          <hr>
+        <label
+          >Observações:
+          <textarea id="observacoes"></textarea>
+        </label>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <!-- MODAL -->
+    <div id="modalConfirmacao" class="modal">
+      <div class="modal-content">
+        <h2>Confirme suas informações</h2>
+        <pre id="modalTexto"></pre>
+        <div class="modal-buttons">
+          <button id="btnConfirmar">Enviar</button>
+          <button id="btnFechar">Cancelar</button>
         </div>
-      </template>
-
-      <br>
-
-      <label>Observações:
-        <textarea id="observacoes"></textarea>
-      </label>
-
-      <button type="submit">Enviar</button>
-
-    </form>
-  </div>
-
-  <!-- MODAL -->
-  <div id="modalConfirmacao" class="modal">
-    <div class="modal-content">
-      <h2>Confirme suas informações</h2>
-      <pre id="modalTexto"></pre>
-      <div class="modal-buttons">
-        <button id="btnConfirmar">Enviar</button>
-        <button id="btnFechar">Cancelar</button>
       </div>
     </div>
-  </div>
 
-  <script src="assets/js/script.js"></script>
-</body>
-
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
